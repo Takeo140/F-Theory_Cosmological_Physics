@@ -5,6 +5,7 @@ F-Theory: Cosmological PhysicsThe Mathematical Foundation of the Universe
 4. Formal EvidenceThe Lean 4 code in this repository serves as mathematical proof that this logical structure is consistent and free of contradictions.
 
     Author: Takeo Yamamoto
-    License: CC BY 4.0 (Attribution Required)
+
+   License: CC BY 4.0 (Attribution Required)
 
 Zenodo: DOI [https://doi.org/10.5281/zenodo.17635922]
