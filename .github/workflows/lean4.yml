@@ -17,24 +17,14 @@ jobs:
           curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
           echo "$HOME/.elan/bin" >> $GITHUB_PATH
 
-      - name: Initialize Physics Environment
-        run: |
-          # ツールチェーンのインストール
-          $HOME/.elan/bin/elan toolchain install leanprover/lean4:stable
-          $HOME/.elan/bin/elan default leanprover/lean4:stable
-          
-          # 宇宙物理学に必要な数学ライブラリ(Mathlib)の設定
-          echo 'import Lake' > lakefile.lean
-          echo 'open Lake DSL' >> lakefile.lean
-          echo 'package cosmology' >> lakefile.lean
-          echo 'require mathlib from git "https://github.com/leanprover-community/mathlib4"' >> lakefile.lean
-          
-          # ライブラリのダウンロードとビルド（ここが一番時間がかかります）
-          $HOME/.elan/bin/elan run lake update
-          # 高速化のため、バイナリキャッシュの取得を試みる
-          $HOME/.elan/bin/elan run lake exe cache get || true
-
       - name: Verify Cosmology Theory
         run: |
-          # 宇宙物理学のファイルを検閲
-          $HOME/.elan/bin/elan run lean FTheoryCosmologicalImproved.lean
+          # パスを確実に通す
+          export PATH="$HOME/.elan/bin:$PATH"
+          
+          # ツールチェーンをインストールし、その場で「+バージョン名」で直接叩く
+          elan toolchain install leanprover/lean4:stable
+          
+          # 宇宙物理学のファイルを直接検閲
+          # elan run ではなく、+stable を指定して直接実行
+          elan run leanprover/lean4:stable lean FTheoryCosmologicalImproved.lean
