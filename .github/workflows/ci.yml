@@ -1,14 +1,17 @@
 name: F-Theory Cosmology CI + Auto Merge
 
 on:
+  push:
+    branches: [ main ]  # メインブランチの履歴に ✅ を表示させる
   pull_request:
     branches: [ main ]
     types: [opened, reopened, synchronize]
 
-# マージを実行するために必要な書き込み権限を明示
+# 権限設定：マージとステータス読み取りを許可
 permissions:
   contents: write
   pull-requests: write
+  statuses: read
 
 jobs:
   build:
@@ -27,14 +30,18 @@ jobs:
         run: |
           elan default leanprover/lean4:stable
           
-          # 宇宙の「表（現象）」を記述するためのパッケージ構成
-          cat << EOF > lakefile.lean
+          # lakefile.leanが存在しない場合のみ作成（既存の設定を壊さないため）
+          if [ ! -f lakefile.lean ]; then
+            cat << EOF > lakefile.lean
           import Lake
           open Lake DSL
           package cosmology
           require mathlib from git "https://github.com/leanprover-community/mathlib4"
           lean_lib Cosmology
           EOF
+          fi
+          
+          lake update
 
       - name: Get Mathlib Cache
         run: |
@@ -47,17 +54,22 @@ jobs:
   auto-merge:
     name: Auto Merge if CI Green
     needs: build
+    # PR時のみ実行し、メインへのPush時はスキップ（エラー防止）
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Auto Merge
         uses: actions/github-script@v7
         with:
           script: |
-            const pr = context.payload.pull_request;
-            // buildジョブが完了している＝極値原理と論理一貫性が証明されたとみなす
-            await github.rest.pulls.merge({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pr.number,
-              merge_method: "squash"
-            });
+            try {
+              await github.rest.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
+                merge_method: "squash"
+              });
+              console.log("Auto-merged successfully.");
+            } catch (e) {
+              console.log("Merge failed (likely branch protection or conflict):", e);
+            }
