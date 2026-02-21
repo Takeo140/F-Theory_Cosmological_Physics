@@ -2,12 +2,11 @@ name: F-Theory Cosmology CI + Auto Merge
 
 on:
   push:
-    branches: [ main ]  # メインブランチの履歴に ✅ を表示させる
+    branches: [ main ]  # これでメインブランチの履歴に ✅ が刻まれます
   pull_request:
     branches: [ main ]
     types: [opened, reopened, synchronize]
 
-# 権限設定：マージとステータス読み取りを許可
 permissions:
   contents: write
   pull-requests: write
@@ -30,7 +29,7 @@ jobs:
         run: |
           elan default leanprover/lean4:stable
           
-          # lakefile.leanが存在しない場合のみ作成（既存の設定を壊さないため）
+          # 宇宙の幾何学を記述するためのパッケージ構成
           if [ ! -f lakefile.lean ]; then
             cat << EOF > lakefile.lean
           import Lake
@@ -54,8 +53,8 @@ jobs:
   auto-merge:
     name: Auto Merge if CI Green
     needs: build
-    # PR時のみ実行し、メインへのPush時はスキップ（エラー防止）
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    # PRイベントの時のみ実行（スキップ防止の最優先設定）
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Auto Merge
@@ -69,7 +68,7 @@ jobs:
                 pull_number: context.payload.pull_request.number,
                 merge_method: "squash"
               });
-              console.log("Auto-merged successfully.");
+              console.log("Universe Synchronized: Merge Successful!");
             } catch (e) {
-              console.log("Merge failed (likely branch protection or conflict):", e);
+              console.log("Observation failed or already merged: ", e.message);
             }
