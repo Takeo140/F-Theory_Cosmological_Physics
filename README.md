@@ -1,7 +1,7 @@
 # F-Theory: Cosmological Physics
 
 [![Lean 4 CI](https://img.shields.io/badge/Formal_Proof-Lean_4-green.svg)](https://leanprover.github.io/)
-LICENSE Approach2.0
+LICENSE Apache2.0
 
 ## Overview
 
