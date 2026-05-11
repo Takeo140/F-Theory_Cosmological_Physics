@@ -1,7 +1,7 @@
 # F-Theory: Cosmological Physics
 
 [![Lean 4 CI](https://img.shields.io/badge/Formal_Proof-Lean_4-green.svg)](https://leanprover.github.io/)
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+LICENSE approach2.0
 
 ## Overview
 
@@ -57,7 +57,7 @@ lake build
 
 ## License
 
-CC BY 4.0 — Attribution required.  
+approach2.0.  
 Author: Takeo Yamamoto  
 Zenodo: [DOI: 10.5281/zenodo.17635922](https://doi.org/10.5281/zenodo.17635922)
 
