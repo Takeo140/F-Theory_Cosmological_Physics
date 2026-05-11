@@ -57,7 +57,7 @@ lake build
 
 ## License
 
-approach2.0.  
+Apache2.0.  
 Author: Takeo Yamamoto  
 Zenodo: [DOI: 10.5281/zenodo.17635922](https://doi.org/10.5281/zenodo.17635922)
 
