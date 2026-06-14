@@ -2,6 +2,7 @@
 
 [![Lean 4 CI](https://img.shields.io/badge/Formal_Proof-Lean_4-green.svg)](https://leanprover.github.io/)
 LICENSE Apache2.0
+[![DOI](https://zenodo.org/badge/1155474552.svg)](https://doi.org/10.5281/zenodo.20693177)
 
 ## Overview
 
