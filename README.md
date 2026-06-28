@@ -1,64 +1,52 @@
 # F-Theory: Cosmological Physics
 
-[![Lean 4 CI](https://img.shields.io/badge/Formal_Proof-Lean_4-green.svg)](https://leanprover.github.io/)
-LICENSE Apache2.0
-[![DOI](https://zenodo.org/badge/1155474552.svg)](https://doi.org/10.5281/zenodo.20693177)
+[![Lean 4 CI](https://github.com/Takeo140/F-Theory_Cosmological_Physics/actions/workflows/ci.yml/badge.svg)](https://github.com/Takeo140/F-Theory_Cosmological_Physics/actions)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17635922.svg)](https://doi.org/10.5281/zenodo.17635922)
 
-## Overview
+This repository provides a formal **Lean 4** verification of a unified cosmological framework based on the extremal principle of F-theory. 
 
-This repository provides a Lean 4 formalization of a theoretical framework that models the unified structure of the universe via the extremal principle of F-theory.
+The framework establishes a rigorous structural correspondence between the two fundamental facets of reality: the **Obverse** (the material/physical manifestation) and the **Reverse** (the underlying mathematical/logical structure). By formalizing this duality, the theory derives cosmic expansion, dark matter, and dark energy as necessary logical consequences of systemic consistency.
 
-The framework distinguishes between two complementary aspects of reality:
+---
 
-- **Obverse** — the material/physical aspect
-- **Reverse** — the mathematical/logical aspect
+## ── Core Framework & Axioms
 
-Their correspondence is formally verified using Lean 4.
+The mathematical foundation is formalized within `Cosmology.lean` and revolves around three primary axioms:
 
-> *F-Theory: Cosmological Physics*  
-> Takeo Yamamoto — [DOI: 10.5281/zenodo.17635922](https://doi.org/10.5281/zenodo.17635922)
+1. **The Extremum Principle**  
+   Systems and cosmic fields evolve to extremize (minimize) the governing action functional. The variation of the action $A$ vanishes identically:
+   $$\delta A = 0$$
 
-## Core Framework
+2. **Obverse-Reverse Correspondence**  
+   Material reality (Obverse) and logical/mathematical structures (Reverse) are linked via a continuous, structure-preserving mapping:
+   $$\Phi: \text{Obverse} \longleftrightarrow \text{Reverse}$$
 
-### Axioms (formalized in `Cosmology.lean`)
+3. **Logical Consistency**  
+   The universe functions as a self-consistent formal system free of internal contradictions. The global logical error functional $C$ is strictly zero:
+   $$C = 0$$
 
-1. **Extremum Principle** — Systems evolve to minimize action: `δA = 0`
-2. **Obverse-Reverse Correspondence** — Material reality and mathematical structure are connected via continuous mapping
-3. **Logical Consistency** — The universe functions as a self-consistent formal system
+---
 
-### Key Derivations (`Derivations.lean`)
+## ── Key Derivations
 
-From these axioms, the framework derives:
+Using the foundational axioms, the proofs contained in `Derivations.lean` mathematically derive several key cosmological phenomena:
 
-- Cosmic expansion
-- Dark matter structure
-- Dark energy behavior
-- Mass-energy equivalence as a logical consequence of hierarchical consistency
+* **Cosmic Expansion:** Emerges naturally from the dynamic tension and alignment between the Obverse and Reverse spaces.
+* **Dark Matter & Dark Energy:** Formulated not as arbitrary physical particles, but as geometric and logical boundary conditions required to preserve global consistency.
+* **Mass-Energy Equivalence ($E=mc^2$):** Derived rigorously as a direct consequence of hierarchical consistency and conservation laws within the F-theory framework.
 
-## Relationship to Meta-Axioms
+### Relationship to the Four Meta-Axioms
+This cosmological system serves as a concrete physical application of the broader **Four Meta-Axioms**. The Extremum Principle instantiates Meta-Axiom 1, while the Obverse-Reverse correspondence serves as a direct manifestation of Meta-Axioms 2 (Topological Space) and 4 (Hierarchical Structure).
+* See also: [Meta-Axiom Repository](https://github.com/Takeo140/Meta-Axiom)
 
-This framework is an application of the four meta-axioms to cosmological physics. The extremal principle here corresponds directly to Meta-Axiom 1, while the Obverse-Reverse correspondence instantiates Meta-Axioms 2 and 4.
+---
 
-See also: [Meta-Axiom repository](https://github.com/Takeo140/Meta-Axiom)
+## ── Repository Structure
 
-## What the Lean Formalization Demonstrates
-
-- The Obverse-Reverse correspondence is formally consistent
-- Cosmological phenomena can be derived from the extremal principle
-- The logical structure is free of internal contradictions
-
-## Contributing
-
-Contributions via fork and pull request are welcome.  
-All contributions must pass the Lean 4 CI before merging.
-
-```bash
-lake build
-```
-
-## License
-
-Apache2.0.  
-Author: Takeo Yamamoto  
-Zenodo: [DOI: 10.5281/zenodo.17635922](https://doi.org/10.5281/zenodo.17635922)
-
+```text
+├── .github/workflows/    # CI configuration for automated Lean 4 verification
+├── Cosmology.lean        # Core definitions, axioms, and the Obverse-Reverse mapping
+├── Derivations.lean      # Formal proofs of cosmic expansion, dark energy, and equivalence
+├── LICENSE               # Apache License 2.0
+└── NOTICE                # Copyright and attribution details
