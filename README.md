@@ -2,7 +2,7 @@
 
 [![Lean 4 CI](https://github.com/Takeo140/F-Theory_Cosmological_Physics/actions/workflows/ci.yml/badge.svg)](https://github.com/Takeo140/F-Theory_Cosmological_Physics/actions)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17635922.svg)](https://doi.org/10.5281/zenodo.17635922)
+[![DOI](https://zenodo.org/badge/1155474552.svg)](https://doi.org/10.5281/zenodo.20693177)
 
 This repository provides a formal **Lean 4** verification of a unified cosmological framework based on the extremal principle of F-theory. 
 
