@@ -1,3 +1,4 @@
+License Apache-2.0  Takeo Yamamoto
 import Mathlib.Data.Real.Basic
 import Mathlib.Topology.Basic
 import Mathlib.Logic.Basic
